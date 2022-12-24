@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Nav from "../Components/Nav.jsx";
 import Cards from "../Components/Cards.jsx";
-import { Route , Router } from "react-router-dom";
+import { Route } from "react-router-dom";
 import About from "../Components/About";
 import Ciudad from "../Components/Ciudad";
 
