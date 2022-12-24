@@ -1,0 +1,41 @@
+
+.citi{
+    width: 100%;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid rgba(16,123,175,255);
+    outline: none;
+    border-right: none;
+    padding: 12px;
+    height: 40px;
+    font-family:arial,sans-serif;
+}
+
+.citi:hover{
+    border-color:whitesmoke;
+}
+
+.citi:focus{
+    box-shadow: 1px 1px 10px 1px rgb(109, 110, 212);
+    border: 1px solid transparent;
+    color: rgba(5,46,104,255);
+    transition: border-color 0.2s cubic-bezier(0.03, 0.02, 1, 0.99),box-shadow 0.2s cubic-bezier(0.03, 0.02, 1, 0.99);
+}
+
+.btn{
+    position: absolute;
+    font-family:arial,sans-serif;
+    border: 1px solid rgb(109, 110, 212);
+    background: #fff;
+    color: rgb(109, 110, 212);
+    border-radius: 0 4px 4px 0;
+    height: 40px;
+}
+
+.btn:hover{
+    background-color:rgb(109, 110, 212);
+    color: #fff;
+}
+
+.btn:focus{
+    outline: none;
+}

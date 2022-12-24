@@ -1,0 +1,71 @@
+.selected{
+    outline: none;
+    color: red;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 200px;
+    height: 240px;
+    background-image: url("https://c.wallhere.com/photos/24/53/1080x1920_px_clouds-515575.jpg!d");
+    margin:20px;
+    border-radius:10%;
+    border: 1px solid rgb(201, 201, 201);
+    color:rgb(255, 255, 255);
+    font-family:arial,sans-serif;
+    animation:scale .6s cubic-bezier(.39,.575,.565,1.000)
+  
+}
+
+@keyframes scale{0%{transform:scale(.5)}100%{transform:scale(1)}}
+
+.card:hover{
+    border-color: black;
+    transition: border-color 0.2s ease-out;
+}
+
+
+.card button{
+    visibility: hidden;
+    color: white;
+    outline: none;
+    position: relative;
+    left: 43%;
+    border-radius:30%;
+    border: none; 
+    background-color: rgba(24,51,78,255)
+}
+
+.card:hover button{
+    visibility: visible;
+}
+
+.nameContainer{  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name{
+    margin:0 15px;
+    font-size: 26px;
+
+}
+
+.nameGreatter{
+    font-size: 14px;
+}
+
+.img{
+    position: absolute;
+    top:36%
+}
+
+
+.card p{
+    word-spacing: 20px;
+    position: absolute;
+    top: 80%
+};

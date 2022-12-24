@@ -1,0 +1,17 @@
+.Con{
+  background-image: url("https://c.wallhere.com/photos/24/53/1080x1920_px_clouds-515575.jpg!d");
+  margin: 20px;
+  border-radius: 4px;
+
+}
+
+.NavCon{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 80px 10px 10px;
+  padding: 5px;
+}
+
+
+
+
