@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 function Nav({onSearch}) {
   return (
     <div className='Con'>
@@ -17,8 +18,10 @@ function Nav({onSearch}) {
       <Link to='/about'>
         <span>About</span>
       </Link>
+    
       <SearchBar onSearch={onSearch} />
       </div> 
+      
     </div>
     
   );

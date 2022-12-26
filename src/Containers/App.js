@@ -6,8 +6,11 @@ import { Route } from "react-router-dom";
 import About from "../Components/About";
 import Ciudad from "../Components/Ciudad";
 
+
+
 function App() {
   const [cities, setCities] = useState([]);
+  const [open, setOpen] = useState(false);
   const { REACT_APP_API_KEY } = process.env
 
   function onSearch(cities) {
@@ -32,7 +35,7 @@ function App() {
           };
           setCities((oldCities) => [...oldCities, ciudad]);
         } else {
-          alert("Ciudad no encontrada");
+          setOpen(true)
         }
       });
   }
@@ -48,6 +51,14 @@ function App() {
       return null;
     }
   }
+
+  React.useEffect(()=>{
+    if(open){
+      setTimeout(()=>{
+        setOpen(false)
+      },500)
+    }
+  },[open])
 
   return (
     <div className="App">
@@ -65,7 +76,8 @@ function App() {
       ></Route>
       
         <Route exact path="/">
-          <Cards cities={cities} onClose={onClose} />
+          <Cards cities={cities} onClose={onClose} bool={open} />
+          
         </Route>
       
      
