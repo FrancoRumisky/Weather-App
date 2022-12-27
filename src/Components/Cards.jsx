@@ -3,25 +3,25 @@ import React from "react";
 import Card from "./Card";
 
 export default function Cards({ cities, onClose, bool }) {
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+  // const handleClose = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
 
-    setOpen(false);
-  };
+  //   setOpen(false);
+  // };
 
-  React.useEffect(() => {
-    const handleClick = () => {
-      setOpen(bool);
-    };
+  // React.useEffect(() => {
+  //   const handleClick = () => {
+  //     setOpen(bool);
+  //   };
 
-    if (bool) {
-      handleClick();
-    }
-  }, [bool]);
+  //   if (bool) {
+  //     handleClick();
+  //   }
+  // }, [bool]);
 
   if (!cities.length) {
     return (
