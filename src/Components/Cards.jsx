@@ -1,33 +1,35 @@
-// import { Snackbar, Alert } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 import React from "react";
 import Card from "./Card";
 
 export default function Cards({ cities, onClose, bool }) {
-  // const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  console.log(open);
 
-  // const handleClose = (event, reason) => {
-  //   if (reason === "clickaway") {
-  //     return;
-  //   }
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
-  //   setOpen(false);
-  // };
+    setOpen(false);
+  };
 
-  // React.useEffect(() => {
-  //   const handleClick = () => {
-  //     setOpen(bool);
-  //   };
+  React.useEffect(() => {
+    const handleClick = () => {
+      setOpen(bool);
+    };
 
-  //   if (bool) {
-  //     handleClick();
-  //   }
-  // }, [bool]);
+    if (bool) {
+      handleClick();
+    }
+  }, [bool]);
 
   if (!cities.length) {
     return (
       <>
         <div>
-          {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
             <Alert
               onClose={handleClose}
               variant="filled"
@@ -36,7 +38,7 @@ export default function Cards({ cities, onClose, bool }) {
             >
               Ciudad no encontrada
             </Alert>
-          </Snackbar> */}
+          </Snackbar>
 
           <h4>Ingrese Una Ciudad</h4>
         </div>
@@ -46,7 +48,7 @@ export default function Cards({ cities, onClose, bool }) {
 
   return (
     <div>
-      {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert
           onClose={handleClose}
           variant="filled"
@@ -55,7 +57,7 @@ export default function Cards({ cities, onClose, bool }) {
         >
           Ciudad no encontrada
         </Alert>
-      </Snackbar> */}
+      </Snackbar>
       {cities &&
         cities.map((c) => (
           <Card
@@ -71,22 +73,3 @@ export default function Cards({ cities, onClose, bool }) {
     </div>
   );
 }
-
-// class Cards extends React.Component{
-//  render(){
-//    if(!this.props.cities){
-//      return <h1>No hay cuidades disponibles</h1>
-//     }
-//    return(
-//   <div>
-//    {
-//     cities && cities.map(c => (
-//       <Card name={c.name} min={c.main.temp_min} max={c.main.temp_max} img={c.weather[0].icon} onClose={() => alert(c.name)}
-//       key={c.id}/>
-//        ))
-
-//    }
-//     </div>
-//    )
-//  }
-// }

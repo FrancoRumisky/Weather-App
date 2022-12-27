@@ -12,6 +12,7 @@ function App() {
   const [cities, setCities] = useState([]);
   const [open, setOpen] = useState(false);
   const { REACT_APP_API_KEY } = process.env
+  
 
   function onSearch(cities) {
     fetch(
