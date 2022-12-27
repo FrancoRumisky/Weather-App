@@ -22,7 +22,7 @@ export default function Cards({ cities, onClose, bool }) {
     if (bool) {
       handleClick();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [bool]);
 
   if (!cities.length) {
