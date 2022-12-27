@@ -1,14 +1,10 @@
 import { Snackbar, Alert } from "@mui/material";
 import React from "react";
 import Card from "./Card";
-import earth from "../img/lg.gif"
+import earth from "../img/lg.gif";
 
 export default function Cards({ cities, onClose, bool }) {
   const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(bool);
-  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -19,10 +15,13 @@ export default function Cards({ cities, onClose, bool }) {
   };
 
   React.useEffect(() => {
+    const handleClick = () => {
+      setOpen(bool);
+    };
+
     if (bool) {
       handleClick();
     }
-    
   }, [bool]);
 
   if (!cities.length) {
