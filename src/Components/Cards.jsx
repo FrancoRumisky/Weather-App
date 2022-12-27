@@ -1,4 +1,4 @@
-import { Snackbar, Alert } from "@mui/material";
+// import { Snackbar, Alert } from "@mui/material";
 import React from "react";
 import Card from "./Card";
 
@@ -27,7 +27,7 @@ export default function Cards({ cities, onClose, bool }) {
     return (
       <>
         <div>
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          {/* <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
             <Alert
               onClose={handleClose}
               variant="filled"
@@ -36,7 +36,7 @@ export default function Cards({ cities, onClose, bool }) {
             >
               Ciudad no encontrada
             </Alert>
-          </Snackbar>
+          </Snackbar> */}
 
           <h4>Ingrese Una Ciudad</h4>
         </div>
@@ -46,7 +46,7 @@ export default function Cards({ cities, onClose, bool }) {
 
   return (
     <div>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert
           onClose={handleClose}
           variant="filled"
@@ -55,7 +55,7 @@ export default function Cards({ cities, onClose, bool }) {
         >
           Ciudad no encontrada
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
       {cities &&
         cities.map((c) => (
           <Card
