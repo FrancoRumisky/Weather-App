@@ -2,6 +2,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import React from "react";
 import Card from "./Card";
+import earth from "../img/lg.gif"
 
 export default function Cards({ cities, onClose, bool }) {
   const [open, setOpen] = React.useState(false);
@@ -40,7 +41,7 @@ export default function Cards({ cities, onClose, bool }) {
             </Alert>
           </Snackbar>
 
-          <h4>Ingrese Una Ciudad</h4>
+          <img src={earth} alt="earth" />
         </div>
       </>
     );
