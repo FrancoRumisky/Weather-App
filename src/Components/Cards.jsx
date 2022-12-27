@@ -1,6 +1,7 @@
 import { Snackbar, Alert } from "@mui/material";
 import React from "react";
 import Card from "./Card";
+import earth from "../img/lg.gif"
 
 export default function Cards({ cities, onClose, bool }) {
   const [open, setOpen] = React.useState(false);
@@ -31,6 +32,7 @@ export default function Cards({ cities, onClose, bool }) {
           <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
             <Alert
               onClose={handleClose}
+              variant="filled"
               severity="error"
               sx={{ width: "100%" }}
             >
@@ -38,7 +40,7 @@ export default function Cards({ cities, onClose, bool }) {
             </Alert>
           </Snackbar>
 
-          <h4>Ingrese una Ciudad</h4>
+          <img src={earth} alt="earth" />
         </div>
       </>
     );
@@ -47,7 +49,12 @@ export default function Cards({ cities, onClose, bool }) {
   return (
     <div>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        <Alert
+          onClose={handleClose}
+          variant="filled"
+          severity="error"
+          sx={{ width: "100%" }}
+        >
           Ciudad no encontrada
         </Alert>
       </Snackbar>
