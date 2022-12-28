@@ -82,7 +82,7 @@ function App() {
             }
             return null;
           } else {
-            setOpen(true);
+            return;
           }
         })
     );
