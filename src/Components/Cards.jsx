@@ -2,12 +2,13 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import React from "react";
 import Card from "./Card";
-import earth from "../img/lg.gif"
-import style from "./styles/Cards.module.css"
+import earth from "../img/lg.gif";
+import style from "./styles/Cards.module.css";
+
 
 export default function Cards({ cities, onClose, bool }) {
   const [open, setOpen] = React.useState(false);
-  console.log(open);
+  
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -16,6 +17,8 @@ export default function Cards({ cities, onClose, bool }) {
 
     setOpen(false);
   };
+
+  
 
   React.useEffect(() => {
     const handleClick = () => {
@@ -60,7 +63,8 @@ export default function Cards({ cities, onClose, bool }) {
           Ciudad no encontrada
         </Alert>
       </Snackbar>
-      {cities &&
+      
+      {cities.length > 0 &&
         cities.map((c) => (
           <Card
             name={c.name}

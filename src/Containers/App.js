@@ -5,18 +5,16 @@ import Cards from "../Components/Cards.jsx";
 import { Route } from "react-router-dom";
 import About from "../Components/About";
 import Ciudad from "../Components/Ciudad";
-
-
+import { getUserLocation } from "../Helpers/getUserLocation.ts";
 
 function App() {
   const [cities, setCities] = useState([]);
   const [open, setOpen] = useState(false);
-  const { REACT_APP_API_KEY } = process.env
-  
+  const { REACT_APP_API_KEY } = process.env;
 
-  function onSearch(cities) {
+  function onSearch(citie) {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cities}&appid=${REACT_APP_API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${citie}&appid=${REACT_APP_API_KEY}&units=metric`
     )
       .then((r) => r.json())
       .then((recurso) => {
@@ -34,9 +32,13 @@ function App() {
             latitud: recurso.coord.lat,
             longitud: recurso.coord.lon,
           };
-          setCities((oldCities) => [...oldCities, ciudad]);
+          const ids = cities.map((c) => c.id);
+          if (!ids.includes(ciudad.id)) {
+            setCities((oldCities) => [...oldCities, ciudad]);
+          }
+          return null;
         } else {
-          setOpen(true)
+          setOpen(true);
         }
       });
   }
@@ -53,17 +55,50 @@ function App() {
     }
   }
 
-  React.useEffect(()=>{
-    if(open){
-      setTimeout(()=>{
-        setOpen(false)
-      },500)
+  React.useEffect(() => {
+    getUserLocation().then((latlng) =>
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latlng[0]}&lon=${latlng[1]}&appid=${REACT_APP_API_KEY}&units=metric`
+      )
+        .then((r) => r.json())
+        .then((recurso) => {
+          if (recurso.main !== undefined) {
+            const ciudad = {
+              min: Math.round(recurso.main.temp_min),
+              max: Math.round(recurso.main.temp_max),
+              img: recurso.weather[0].icon,
+              id: recurso.id,
+              wind: recurso.wind.speed,
+              temp: Math.round(recurso.main.temp),
+              name: recurso.name,
+              weather: recurso.weather[0].main,
+              clouds: recurso.clouds.all,
+              latitud: recurso.coord.lat,
+              longitud: recurso.coord.lon,
+            };
+            const ids = cities.map((c) => c.id);
+            if (!ids.includes(ciudad.id)) {
+              setCities((oldCities) => [...oldCities, ciudad]);
+            }
+            return null;
+          } else {
+            setOpen(true);
+          }
+        })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  React.useEffect(() => {
+    if (open) {
+      setTimeout(() => {
+        setOpen(false);
+      }, 500);
     }
-  },[open])
+  }, [open]);
 
   return (
     <div className="App">
-      
       <Route path="/">
         <Nav onSearch={onSearch} />
       </Route>
@@ -75,13 +110,10 @@ function App() {
           <Ciudad city={onFilter(match.params.ciudadId)} />
         )}
       ></Route>
-      
-        <Route exact path="/">
-          <Cards cities={cities} onClose={onClose} bool={open} />
-          
-        </Route>
-      
-     
+
+      <Route exact path="/">
+        <Cards cities={cities} onClose={onClose} bool={open} />
+      </Route>
     </div>
   );
 }
