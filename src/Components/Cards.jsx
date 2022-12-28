@@ -3,6 +3,7 @@ import Alert from "@mui/material/Alert";
 import React from "react";
 import Card from "./Card";
 import earth from "../img/lg.gif"
+import style from "./styles/Cards.module.css"
 
 export default function Cards({ cities, onClose, bool }) {
   const [open, setOpen] = React.useState(false);
@@ -41,7 +42,7 @@ export default function Cards({ cities, onClose, bool }) {
             </Alert>
           </Snackbar>
 
-          <img src={earth} alt="earth" />
+          <img className={style.earth} src={earth} alt="earth" />
         </div>
       </>
     );
