@@ -12,9 +12,11 @@ function App() {
   const [open, setOpen] = useState(false);
   const { REACT_APP_API_KEY } = process.env;
 
+  console.log(cities)
+
   function onSearch(citie) {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${citie}&appid=${REACT_APP_API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${citie}&appid=${REACT_APP_API_KEY}&units=metric&lang=es`
     )
       .then((r) => r.json())
       .then((recurso) => {
@@ -27,10 +29,11 @@ function App() {
             wind: recurso.wind.speed,
             temp: Math.round(recurso.main.temp),
             name: recurso.name,
-            weather: recurso.weather[0].main,
+            weather: recurso.weather[0].description,
             clouds: recurso.clouds.all,
             latitud: recurso.coord.lat,
             longitud: recurso.coord.lon,
+            humidity: recurso.main.humidity
           };
           const ids = cities.map((c) => c.id);
           if (!ids.includes(ciudad.id)) {
@@ -58,23 +61,24 @@ function App() {
   React.useEffect(() => {
     getUserLocation().then((latlng) =>
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latlng[0]}&lon=${latlng[1]}&appid=${REACT_APP_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latlng[0]}&lon=${latlng[1]}&appid=${REACT_APP_API_KEY}&units=metric&lang=es`
       )
         .then((r) => r.json())
         .then((recurso) => {
           if (recurso.main !== undefined) {
             const ciudad = {
               min: Math.round(recurso.main.temp_min),
-              max: Math.round(recurso.main.temp_max),
-              img: recurso.weather[0].icon,
-              id: recurso.id,
-              wind: recurso.wind.speed,
-              temp: Math.round(recurso.main.temp),
-              name: recurso.name,
-              weather: recurso.weather[0].main,
-              clouds: recurso.clouds.all,
-              latitud: recurso.coord.lat,
-              longitud: recurso.coord.lon,
+            max: Math.round(recurso.main.temp_max),
+            img: recurso.weather[0].icon,
+            id: recurso.id,
+            wind: recurso.wind.speed,
+            temp: Math.round(recurso.main.temp),
+            name: recurso.name,
+            weather: recurso.weather[0].description,
+            clouds: recurso.clouds.all,
+            latitud: recurso.coord.lat,
+            longitud: recurso.coord.lon,
+            humidity: recurso.main.humidity
             };
             const ids = cities.map((c) => c.id);
             if (!ids.includes(ciudad.id)) {
