@@ -1,7 +1,7 @@
 .Con{
-  background-image: url("https://c.wallhere.com/photos/24/53/1080x1920_px_clouds-515575.jpg!d");
+  background-color: transparent;
   margin: 20px;
-  border-radius: 4px;
+  border:1px dotted rgba(184, 6, 145, 0.801);
 
 }
 

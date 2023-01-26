@@ -2,9 +2,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import React from "react";
 import Card from "./Card";
-import earth from "../img/lg.gif";
-import style from "./styles/Cards.module.css";
-
+import { Skeleton } from "@mui/material";
 
 export default function Cards({ cities, onClose, bool }) {
   const [open, setOpen] = React.useState(false);
@@ -33,7 +31,10 @@ export default function Cards({ cities, onClose, bool }) {
   if (!cities.length) {
     return (
       <>
-        <div>
+        <div style={{
+    display: "flex",
+    justifyContent: "center"
+}}>
           <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
             <Alert
               onClose={handleClose}
@@ -45,7 +46,7 @@ export default function Cards({ cities, onClose, bool }) {
             </Alert>
           </Snackbar>
 
-          <img className={style.earth} src={earth} alt="earth" />
+          <Skeleton variant="rectangular" width={500} height={300} animation="wave" sx={{ bgcolor: 'rgba(34, 34, 34, 0.45)', margin:"20px" }} />
         </div>
       </>
     );
@@ -74,6 +75,8 @@ export default function Cards({ cities, onClose, bool }) {
             onClose={(e) => onClose(c.id)}
             key={c.id}
             id={c.id}
+            weather={c.weather}
+            temp={c.temp}
           />
         ))}
     </div>
