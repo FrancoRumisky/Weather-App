@@ -16,7 +16,6 @@ export default function Cards({ cities, onClose, bool }) {
     setOpen(false);
   };
 
-  
 
   React.useEffect(() => {
     const handleClick = () => {
