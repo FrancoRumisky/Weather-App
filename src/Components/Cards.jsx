@@ -2,7 +2,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import React from "react";
 import Card from "./Card";
-import { Skeleton } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function Cards({ cities, onClose, bool }) {
   const [open, setOpen] = React.useState(false);
